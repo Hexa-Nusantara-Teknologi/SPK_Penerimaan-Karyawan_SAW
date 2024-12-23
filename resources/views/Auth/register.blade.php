@@ -22,7 +22,10 @@
                         <div class="card-body p-5 text-center">
 
                             <h3 class="mb-5">Register</h3>
-
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="nama" id="typeNamaX-2" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeEmailX-2">Nama</label>
+                            </div>
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
                                 <label class="form-label" for="typeEmailX-2">Email</label>
@@ -32,15 +35,15 @@
                                 <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
                                 <label class="form-label" for="typePasswordX-2">Password</label>
                             </div>
-
-                            <!-- Checkbox -->
-                            <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Remember password </label>
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                                <label class="form-label" for="typePasswordX-2">Konfirmasi Password</label>
                             </div>
 
+
+
                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block"
-                                type="submit">Registrasi</button>
+                                type="submit">Register</button>
                             <p class="text-center mt-4 mb-0">Sudah Punya Akun? <a href="{{ url('login') }}">Login</a>
                             </p>
                         </div>
