@@ -20,44 +20,44 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('AdminUser/css/sb-admin-2.min.css') }}" rel=" stylesheet">
     <style>
-        .welcome-box {
-            background-color: #CDF0EA;
-            /* Light gray background */
-            padding: 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: black;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
+    .welcome-box {
+        background-color: #CDF0EA;
+        /* Light gray background */
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: black;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
 
-        .welcome-text h1 {
-            font-size: 24px;
-            font-weight: bold;
-        }
+    .welcome-text h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
 
-        .welcome-text p {
-            margin: 0;
-            font-size: 16px;
-        }
+    .welcome-text p {
+        margin: 0;
+        font-size: 16px;
+    }
 
-        .welcome-button {
-            display: flex;
-            align-items: center;
-        }
+    .welcome-button {
+        display: flex;
+        align-items: center;
+    }
 
-        .welcome-button a {
-            text-decoration: none;
-        }
+    .welcome-button a {
+        text-decoration: none;
+    }
 
-        .red-dot {
-            height: 8px;
-            width: 8px;
-            background-color: red;
-            border-radius: 50%;
-            margin-left: 8px;
-        }
+    .red-dot {
+        height: 8px;
+        width: 8px;
+        background-color: red;
+        border-radius: 50%;
+        margin-left: 8px;
+    }
     </style>
 </head>
 
@@ -213,7 +213,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -230,7 +230,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('AdminUser/vendor/jquery/jquery.min.js') }}"></script>

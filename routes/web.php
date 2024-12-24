@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,12 +24,13 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth/register');
 });
-Route::get('/dashboard-user', function () {
-    return view('User/dashboard');
-});
+Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth');
 Route::get('/data-user', function () {
     return view('User/form-data-diri');
 });
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
