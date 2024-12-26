@@ -30,7 +30,41 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
+
+// Route Mulai Data User
 Route::get('/data-user', function () {
     return view('User/form-data-diri');
 });
+
+// Route Mulai Pengerjaan Test - User
+Route::get('/pengerjaan-tes', function () {
+    return view('Pengerjaan-Tes.index');
+});
+
+// Route Mulai Master Users - Admin
+Route::get('/master-users', function () {
+    return view('Master-Users.index');
+});
+
+// Route Mulai Master Soal -Admin
+Route::get('/master-soal', function () {
+    return view('Master-Soal.index');
+});
+
+// Route Mulai Master Kriteria - Admin
+Route::get('/master-kriteria', function () {
+    return view('Master-Kriteria.index');
+});
+
+// Route Mulai Riwayat Pengisian Soal - Admin
+Route::get('/riwayat-pengisian', function () {
+    return view('Riwayat-Pengisian.index');
+});
+
+// Route Mulai Riwayat Ranking - Admin
+Route::get('/ranking', function () {
+    return view('Ranking.index');
+});
+
+
 Auth::routes();
