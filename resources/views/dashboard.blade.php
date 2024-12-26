@@ -21,7 +21,7 @@
     </div>
 </div>
 
-@if(Auth::user()->role == 'User' && Auth::user()->status == 'Belum Lengkap')
+@if(Auth::user()->role == 'User' || Auth::user()->status == 'Belum Lengkap')
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
