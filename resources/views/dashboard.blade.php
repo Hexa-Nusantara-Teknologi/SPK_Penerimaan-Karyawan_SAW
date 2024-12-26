@@ -11,7 +11,7 @@
         <div class="container mt-5">
             <div class="welcome-box">
                 <div class="welcome-text">
-                    <h1>Hallo, Selamat Datang {{Auth::user()->nama}}</h1>
+                    <h1>Hallo, Selamat Datang {{Auth::user()->nama}}!</h1>
 
                 </div>
 
