@@ -26,19 +26,36 @@
             <i class="fas fa-fw fa-user"></i>
             <span>Data Saya</span></a>
     </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-clipboard"></i>
-            <span>Tes Akademik</span></a>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ url('data-user') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Master Users</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-laptop"></i>
-            <span>Tes Soft Skill</span></a>
+            <i class="fas fa-fw fa-list"></i>
+            <span>Master Kriteria</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-question"></i>
+            <span>Master Soal</span></a>
+    </li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-history"></i>
+            <span>Riwayat Pengisian Soal</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-medal"></i>
+            <span>Ranking</span></a>
     </li>
 
     <!-- Divider -->
