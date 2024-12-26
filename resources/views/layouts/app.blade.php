@@ -25,44 +25,44 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('AdminUser/css/sb-admin-2.min.css') }}" rel=" stylesheet">
     <style>
-    .welcome-box {
-        background-color: #CDF0EA;
-        /* Light gray background */
-        padding: 20px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: black;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+        .welcome-box {
+            background-color: #CDF0EA;
+            /* Light gray background */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: black;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
 
-    .welcome-text h1 {
-        font-size: 24px;
-        font-weight: bold;
-    }
+        .welcome-text h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-    .welcome-text p {
-        margin: 0;
-        font-size: 16px;
-    }
+        .welcome-text p {
+            margin: 0;
+            font-size: 16px;
+        }
 
-    .welcome-button {
-        display: flex;
-        align-items: center;
-    }
+        .welcome-button {
+            display: flex;
+            align-items: center;
+        }
 
-    .welcome-button a {
-        text-decoration: none;
-    }
+        .welcome-button a {
+            text-decoration: none;
+        }
 
-    .red-dot {
-        height: 8px;
-        width: 8px;
-        background-color: red;
-        border-radius: 50%;
-        margin-left: 8px;
-    }
+        .red-dot {
+            height: 8px;
+            width: 8px;
+            background-color: red;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
     </style>
 </head>
 
@@ -115,11 +115,11 @@
     <script src="{{ asset('AdminUser/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('AdminUser/js/demo/chart-pie-demo.js') }}"></script>
     <script>
-    document.querySelectorAll('a[href="#"]').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
+        document.querySelectorAll('a[href="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
         });
-    });
     </script>
 </body>
 

@@ -1,8 +1,9 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SoalController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,8 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth/register');
 });
-Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', function () {
@@ -47,9 +49,11 @@ Route::get('/master-users', function () {
 });
 
 // Route Mulai Master Soal -Admin
-Route::get('/master-soal', function () {
-    return view('Master-Soal.index');
-});
+// Route::get('/master-soal', function () {
+//     return view('Master-Soal.index');
+// });
+Route::get('/master-soal', [SoalController::class, 'create'])->name('input.soal');
+Route::post('/master-soal/save', [SoalController::class, 'store'])->name('save.soal');
 
 // Route Mulai Master Kriteria - Admin
 Route::get('/master-kriteria', function () {

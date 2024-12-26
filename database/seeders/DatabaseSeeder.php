@@ -6,6 +6,8 @@ namespace Database\Seeders;
 
 // use App\Models\Criteria;
 // use App\Models\SubCriteria;
+// use App\Models\Pertanyaan;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +22,7 @@ class DatabaseSeeder extends Seeder
                 UsersSeeder::class,
                 CriteriaSeeder::class,
                 SubCriteriaSeeder::class,
+                PertanyaanSeeder::class,
 
             ]
         );

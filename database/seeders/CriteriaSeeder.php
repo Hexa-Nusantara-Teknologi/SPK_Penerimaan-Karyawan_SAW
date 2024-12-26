@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Criteria;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,14 +16,26 @@ class CriteriaSeeder extends Seeder
     {
         Criteria::create([
             'name' => 'Soal Psikotes',
-            'weight' => 30,
+            'weight' => 20,
         ]);
         Criteria::create([
             'name' => 'Soal Soft Skill',
-            'weight' => 50,
+            'weight' => 20,
         ]);
         Criteria::create([
             'name' => 'CV',
+            'weight' => 20,
+        ]);
+        Criteria::create([
+            'name' => 'Radikalisme',
+            'weight' => 10,
+        ]);
+        Criteria::create([
+            'name' => 'Terorisme',
+            'weight' => 10,
+        ]);
+        Criteria::create([
+            'name' => 'Pengalaman Kerja',
             'weight' => 20,
         ]);
     }

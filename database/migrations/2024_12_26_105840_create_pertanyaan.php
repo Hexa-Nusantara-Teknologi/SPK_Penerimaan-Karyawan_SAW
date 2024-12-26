@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('criteria_id')->constrained('criteria');
             $table->text('pertanyaan_text');
+            $table->string('jawaban_a');
+            $table->string('jawaban_b');
+            $table->string('jawaban_c');
+            $table->string('jawaban_d');
+            $table->string('jawaban_benar');
             $table->timestamps();
         });
     }
