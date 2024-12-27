@@ -2,81 +2,86 @@
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid mb-5">
-    <!-- Content Row -->
-    <div class="row"
-        style="background-color: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-        <div class=" container mt-3">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Input Soal</h4>
-                </div>
-                <div class="card-body">
-                    @if(session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                    @endif
-                    @if(session('error'))
-                    <div class="alert alert-danger">{{ session('error') }}</div>
-                    @endif
-                    <form action="{{ route('save.soal') }}" method="POST">
-                        @csrf
-                        <!-- Kategori Soal -->
-                        <div class="mb-3">
-                            <label for="kategori" class="form-label">Kategori Soal</label>
-                            <select id="kategori" name="kategori_id" class="form-select">
-                                <option value="1">Soal Psikotes</option>
-                                <option value="2">Soal Soft Skill</option>
-                            </select>
-                        </div>
-
-                        <!-- Pertanyaan -->
-                        <div class="mb-3">
-                            <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                            <textarea id="pertanyaan" name="pertanyaan" rows="3" class="form-control"
-                                placeholder="Masukkan pertanyaan..."></textarea>
-                        </div>
-
-                        <!-- Pilihan Jawaban -->
-                        <div class="mb-3">
-                            <label class="form-label">Pilihan Jawaban</label>
-                            <div class="input-group mb-2">
-                                <span class="input-group-text">A</span>
-                                <input type="text" name="jawaban_a" class="form-control" placeholder="Jawaban A">
-                            </div>
-                            <div class="input-group mb-2">
-                                <span class="input-group-text">B</span>
-                                <input type="text" name="jawaban_b" class="form-control" placeholder="Jawaban B">
-                            </div>
-                            <div class="input-group mb-2">
-                                <span class="input-group-text">C</span>
-                                <input type="text" name="jawaban_c" class="form-control" placeholder="Jawaban C">
-                            </div>
-                            <div class="input-group mb-2">
-                                <span class="input-group-text">D</span>
-                                <input type="text" name="jawaban_d" class="form-control" placeholder="Jawaban D">
-                            </div>
-                        </div>
-
-                        <!-- Jawaban Benar -->
-                        <div class="mb-3">
-                            <label for="jawaban_benar" class="form-label">Jawaban Benar</label>
-                            <select id="jawaban_benar" name="jawaban_benar" class="form-select">
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                            </select>
-                        </div>
-
-                        <!-- Tombol Simpan -->
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Simpan Soal</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4>Daftar Soal</h4>
+            <!-- Tombol Input Soal -->
+            <a href="{{ route('soal.create') }}" class="btn btn-success">Input Soal</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered" id="soal-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Kategori</th>
+                        <th>Pertanyaan</th>
+                        <th>Jawaban A</th>
+                        <th>Jawaban B</th>
+                        <th>Jawaban C</th>
+                        <th>Jawaban D</th>
+                        <th>Jawaban Benar</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </div>
+
 </div>
 <!-- /.container-fluid -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    var $j = jQuery.noConflict();
+    $j(document).ready(function() {
+        $j('#soal-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('soal.data') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'criteria_id',
+                    name: 'criteria_id'
+                },
+                {
+                    data: 'pertanyaan_text',
+                    name: 'pertanyaan_text'
+                },
+                {
+                    data: 'jawaban_a',
+                    name: 'jawaban_a'
+                },
+                {
+                    data: 'jawaban_b',
+                    name: 'jawaban_b'
+                },
+                {
+                    data: 'jawaban_c',
+                    name: 'jawaban_c'
+                },
+                {
+                    data: 'jawaban_d',
+                    name: 'jawaban_d'
+                },
+                {
+                    data: 'jawaban_benar',
+                    name: 'jawaban_benar'
+                },
+            ]
+        });
+    });
+</script>
 
 @endsection

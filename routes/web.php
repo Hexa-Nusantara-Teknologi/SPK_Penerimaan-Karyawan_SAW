@@ -49,10 +49,9 @@ Route::get('/master-users', function () {
 });
 
 // Route Mulai Master Soal -Admin
-// Route::get('/master-soal', function () {
-//     return view('Master-Soal.index');
-// });
-Route::get('/master-soal', [SoalController::class, 'create'])->name('input.soal');
+Route::get('/master-soal', [SoalController::class, 'index'])->name('input.soal');
+Route::get('/master-soal/data', [SoalController::class, 'getData'])->name('soal.data');
+Route::get('/master-soal/create', [SoalController::class, 'create'])->name('soal.create');
 Route::post('/master-soal/save', [SoalController::class, 'store'])->name('save.soal');
 
 // Route Mulai Master Kriteria - Admin
