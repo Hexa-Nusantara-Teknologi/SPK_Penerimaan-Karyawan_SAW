@@ -31,7 +31,7 @@ class SoalController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     return '<div class="d-flex justify-content-center">
-                            <a href="" class="btn btn-warning btn-sm mr-2">Edit</a>
+                            <a href="' . route('soal.edit', $row->id) . '" class="btn btn-warning btn-sm mr-2">Edit</a>
                             <button class="btn btn-danger btn-sm delete-btn" data-id="' . $row->id . '">Delete</button>
                         </div>';
                 })
@@ -64,6 +64,40 @@ class SoalController extends Controller
         return redirect()->route('soal.index')
             ->with('status', 'success')
             ->with('message', 'Soal berhasil disimpan.');
+    }
+
+    public function edit($id)
+    {
+        $soal = Pertanyaan::findOrFail($id);
+        return view('Master-Soal.edit-soal', compact('soal'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'criteria_id' => 'required|integer',
+            'pertanyaan_text' => 'required|string',
+            'jawaban_a' => 'required|string',
+            'jawaban_b' => 'required|string',
+            'jawaban_c' => 'required|string',
+            'jawaban_d' => 'required|string',
+            'jawaban_benar' => 'required|string|in:jawaban_a,jawaban_b,jawaban_c,jawaban_d',
+        ]);
+
+        $soal = Pertanyaan::findOrFail($id);
+        $soal->update([
+            'criteria_id' => $request->criteria_id,
+            'pertanyaan_text' => $request->pertanyaan_text,
+            'jawaban_a' => $request->jawaban_a,
+            'jawaban_b' => $request->jawaban_b,
+            'jawaban_c' => $request->jawaban_c,
+            'jawaban_d' => $request->jawaban_d,
+            'jawaban_benar' => $request->jawaban_benar,
+        ]);
+
+        return redirect()->route('soal.index')
+            ->with('status', 'success')
+            ->with('message', 'Soal berhasil diperbarui.');
     }
 
     public function destroy($id)
