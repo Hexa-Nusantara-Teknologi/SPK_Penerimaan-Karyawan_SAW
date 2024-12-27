@@ -49,11 +49,11 @@ Route::get('/master-users', function () {
 });
 
 // Route Mulai Master Soal -Admin
-Route::get('/master-soal', [SoalController::class, 'index'])->name('input.soal');
-Route::get('/master-soal/data', [SoalController::class, 'getData'])->name('soal.data');
+Route::get('/master-soal', [SoalController::class, 'index'])->name('soal.index');
 Route::get('/master-soal/create', [SoalController::class, 'create'])->name('soal.create');
-Route::post('/master-soal/save', [SoalController::class, 'store'])->name('save.soal');
-
+Route::post('/master-soal', [SoalController::class, 'store'])->name('soal.store');
+Route::get('/master-soal/data', [SoalController::class, 'getData'])->name('soal.data');
+Route::delete('/master-soal/{id}', [SoalController::class, 'destroy'])->name('soal.destroy');
 // Route Mulai Master Kriteria - Admin
 Route::get('/master-kriteria', function () {
     return view('Master-Kriteria.index');

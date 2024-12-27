@@ -9,13 +9,7 @@
                 <h4 class="mb-0">Input Soal</h4>
             </div>
             <div class="card-body">
-                @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
-                @if(session('error'))
-                <div class="alert alert-danger">{{ session('error') }}</div>
-                @endif
-                <form action="{{ route('save.soal') }}" method="POST">
+                <form action="{{ route('soal.store') }}" method="POST">
                     @csrf
                     <!-- Kategori Soal -->
                     <div class="mb-3">
@@ -72,7 +66,8 @@
 
                     <!-- Tombol Simpan -->
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Simpan Soal</button>
+                        <button type="submit" class="btn btn-primary mb-3">Simpan Soal</button>
+                        <a href="{{ route('soal.index') }}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>
             </div>
