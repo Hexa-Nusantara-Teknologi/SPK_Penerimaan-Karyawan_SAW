@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DataUsersController;
+use Dflydev\DotAccessData\Data;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +36,13 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 // Route Mulai Data User
-Route::get('/data-user', function () {
-    return view('User/form-data-diri');
+// Route::get('/data-user', function () {
+//     return view('User/form-data-diri');
+// });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/data-user', [DataUsersController::class, 'index'])->name('dataUser.index');
+    Route::post('/data-user/update', [DataUsersController::class, 'update'])->name('user.update');
 });
 
 // Route Mulai Pengerjaan Test - User
@@ -54,7 +61,6 @@ Route::get('/master-soal/create', [SoalController::class, 'create'])->name('soal
 Route::post('/master-soal', [SoalController::class, 'store'])->name('soal.store');
 Route::get('/master-soal/data', [SoalController::class, 'getData'])->name('soal.data');
 Route::delete('/master-soal/{id}', [SoalController::class, 'destroy'])->name('soal.destroy');
-
 Route::get('/master-soal/{id}/edit', [SoalController::class, 'edit'])->name('soal.edit');
 Route::put('/master-soal/{id}', [SoalController::class, 'update'])->name('soal.update');
 

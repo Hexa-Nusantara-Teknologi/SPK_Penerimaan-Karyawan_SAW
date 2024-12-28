@@ -27,7 +27,7 @@
     <link href="{{ asset('AdminUser/css/sb-admin-2.min.css') }}" rel=" stylesheet">
     <style>
         .welcome-box {
-            background-color: #CDF0EA;
+            background-color: #ffffff;
             /* Light gray background */
             padding: 20px;
             border-radius: 8px;
