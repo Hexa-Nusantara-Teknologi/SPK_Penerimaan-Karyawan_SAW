@@ -34,7 +34,7 @@
             </script>
             @endif
 
-            <form action="{{ route('user.update', $users->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('users.update', $users->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!-- Nama Lengkap -->
@@ -47,8 +47,8 @@
                 <!-- Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="{{ $users->email }}"
-                        required>
+                    <input type="text" class="form-control" id="email" name="email" value="{{ $users->email }}" required
+                        readonly>
                 </div>
 
                 <!-- password -->
@@ -117,6 +117,27 @@
                 <div class="mb-3">
                     <label for="url" class="form-label">Social Media</label>
                     <input type="url" class="form-control" id="url" name="sosmed" value="{{ $users->sosmed }}" required>
+                </div>
+                <!-- Role -->
+                <!-- Role -->
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <select class="form-select" id="role" name="role" required>
+                        <option value="" disabled selected>Pilih Role User</option>
+                        <option value="Admin" {{ $users->role == 'Admin' ? 'selected' : '' }}>Admin</option>
+                        <option value="User" {{ $users->role == 'User' ? 'selected' : '' }}>User</option>
+                    </select>
+                </div>
+                <!-- Status -->
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status" required>
+                        <option value="" disabled selected>Pilih Status User</option>
+                        <option value="Admin" {{ $users->status == 'Admin' ? 'selected' : '' }}>Admin</option>
+                        <option value="Lengkap" {{ $users->status == 'Lengkap' ? 'selected' : '' }}>Lengkap</option>
+                        <option value="Belum Lengkap" {{ $users->status == 'Belum Lengkap' ? 'selected' : '' }}>Belum
+                            Lengkap</option>
+                    </select>
                 </div>
 
                 <!-- Tombol Submit -->

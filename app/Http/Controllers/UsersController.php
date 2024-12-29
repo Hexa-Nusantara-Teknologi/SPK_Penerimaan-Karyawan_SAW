@@ -94,7 +94,7 @@ class UsersController extends Controller
         // Validasi data input
         $request->validate([
             'nama' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $users->id . ',email',
+            'email' => 'required|email|unique:users,email,' . $users->id . ',id',
             'notelp' => 'nullable|string|regex:/^[0-9]{10,15}$/', // Validasi nomor telepon hanya angka, panjang 10-15 digit
             'alamat' => 'nullable|string|max:255',
             'tgllahir' => 'nullable|date',
@@ -129,18 +129,20 @@ class UsersController extends Controller
 
 
     // Jika file CV ada dalam request dan valid
-    if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
-        // Hapus CV lama jika ada
-        if ($users->cv) {
-            Storage::delete('public/' . $users->cv);
+        if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
+            // Hapus CV lama jika ada
+            if ($users->cv) {
+                Storage::delete('public/' . $users->cv);
+            }
+
+            // Simpan CV baru
+            $cvPath = $request->file('cv')->store('uploads/cv', 'public');
+            $updateData['cv'] = $cvPath;
+        } elseif (!$request->hasFile('cv') && $users->cv) {
+            // Jika tidak ada file baru, tetap mempertahankan file CV lama
+            $updateData['cv'] = $users->cv;
         }
 
-        // Simpan CV baru
-        $cvPath = $request->file('cv')->store('uploads/cv', 'public');
-        $updateData['cv'] = $cvPath;
-    }
-
-    dd($updateData);
         // Simpan perubahan
         $users->update($updateData);
 
