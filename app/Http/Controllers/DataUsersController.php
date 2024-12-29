@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\UsersModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
 
 class DataUsersController extends Controller
 {
@@ -27,8 +29,9 @@ class DataUsersController extends Controller
             'alamat' => 'nullable|string|max:255',
             'tgllahir' => 'nullable|date',
             'pendidikan' => 'nullable|string|max:255',
-            'cv' => 'nullable|file|mimes:pdf|max:2048', // Validasi file PDF maksimum 2MB
+            'cv' => $request->hasFile('cv') ? 'required|file|mimes:pdf|max:2048' : 'nullable',  // Validasi file PDF maksimum 2MB
             'sosmed' => 'nullable|string|max:255',
+            'password' => ['nullable', 'confirmed', Password::min(6)->letters()->numbers()],
         ]);
 
         // Cari pengguna yang sedang login
@@ -38,6 +41,10 @@ class DataUsersController extends Controller
             return redirect()->back()->with('error', 'Pengguna tidak ditemukan!');
         }
 
+        // Jika password diisi, hash dan simpan
+    if (!empty($validatedData['password'])) {
+        $user->password = Hash::make($validatedData['password']);
+    }
         // Update data pengguna
         $user->nama = $validatedData['nama'];
         $user->email = $validatedData['email'];
@@ -49,7 +56,12 @@ class DataUsersController extends Controller
 
         // Jika file CV ada dalam request
         if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
-            // Simpan file CV ke direktori storage/public/uploads/cv
+            // Hapus CV lama jika ada
+            if ($user->cv) {
+                Storage::delete('public/' . $user->cv);
+            }
+
+            // Simpan CV baru
             $cvPath = $request->file('cv')->store('uploads/cv', 'public');
             $user->cv = $cvPath;
         }

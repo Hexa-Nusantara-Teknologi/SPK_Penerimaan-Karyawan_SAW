@@ -20,6 +20,9 @@ class UsersModel extends Model
         'pendidikan',
         'cv',
         'sosmed',
+        'role',
+        'status',
+        'password'
     ];
 
     /**

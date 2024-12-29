@@ -21,7 +21,15 @@ class User extends Authenticatable
         'nama',
         'email',
         'password',
-        'role'
+        'role',
+        'notelp',
+        'alamat',
+        'tgllahir',
+        'pendidikan',
+        'cv',
+        'sosmed',
+        'status'.
+        'password'
     ];
 
     /**
@@ -41,5 +49,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'tgllahir' => 'date',
     ];
 }

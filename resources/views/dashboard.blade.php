@@ -21,26 +21,26 @@
     </div>
 </div>
 
-@if(Auth::user()->role == 'User' || Auth::user()->status == 'Belum Lengkap')
+@if(Auth::user()->role == 'User' && Auth::user()->status == 'Belum Lengkap')
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        Swal.fire({
-            title: 'Lengkapi Data Kamu',
-            text: 'Klik tombol di bawah ini untuk melengkapi data.',
-            icon: 'info',
-            confirmButtonText: 'Lengkapi Data',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            allowEnterKey: false,
+document.addEventListener('DOMContentLoaded', function() {
+    Swal.fire({
+        title: 'Lengkapi Data Kamu',
+        text: 'Klik tombol di bawah ini untuk melengkapi data.',
+        icon: 'info',
+        confirmButtonText: 'Lengkapi Data',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
 
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "{{ url('data-user') }}";
-            }
-        });
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "{{ url('data-user') }}";
+        }
     });
+});
 </script>
 @endif
 <!-- /.container-fluid -->

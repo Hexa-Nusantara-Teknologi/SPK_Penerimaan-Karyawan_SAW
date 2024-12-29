@@ -58,6 +58,15 @@
     @if (auth()->user()->role == 'Admin')
 
     <!-- Nav Item - Tables -->
+    <li class="nav-item @if(request()->is('master-subkriteria')) active @endif">
+        <a class="nav-link" href="{{ url('master-subkriteria') }}">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Master Sub Kriteria</span></a>
+    </li>
+    @endif
+    @if (auth()->user()->role == 'Admin')
+
+    <!-- Nav Item - Tables -->
     <li class="nav-item @if(request()->is('master-soal')) active @endif">
         <a class="nav-link" href="{{ url('master-soal') }}">
             <i class="fas fa-fw fa-question"></i>

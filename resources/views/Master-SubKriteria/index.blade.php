@@ -5,23 +5,21 @@
 <div class="container-fluid mb-5">
     <div class="card">
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-            <h4>Daftar Soal</h4>
-            <!-- Tombol Input Soal -->
-            <a href="{{ route('soal.create') }}" class="btn btn-success">Input Soal</a>
+            <h4>Daftar Sub Kriteria</h4>
+            <!-- Tombol Input sub kriteria -->
+            <a href="{{ route('subkriteria.create') }}" class="btn btn-success">Input sub kriteria</a>
         </div>
 
         <div class="card-body">
-            <table class="table table-bordered" id="soal-table">
+            <table class="table table-bordered" id="subkriteria-table">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Kategori</th>
-                        <th>Pertanyaan</th>
-                        <th>Jawaban A</th>
-                        <th>Jawaban B</th>
-                        <th>Jawaban C</th>
-                        <th>Jawaban D</th>
-                        <th>Jawaban Benar</th>
+                        <th>Nama Kriteria</th>
+                        <th>Nama Sub Kriteria</th>
+                        <th>Min Score</th>
+                        <th>Max Score</th>
+
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -49,47 +47,35 @@ var $j = jQuery.noConflict();
 
 $j(document).ready(function() {
     // Initialize DataTable
-    var table = $j('#soal-table').DataTable({
+    var table = $j('#subkriteria-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('soal.data') }}",
+        ajax: "{{ route('subkriteria.data') }}",
         columns: [{
                 data: 'DT_RowIndex',
                 name: 'DT_RowIndex',
                 orderable: false,
                 searchable: false
             },
+
             {
-                data: 'criteria_id',
-                name: 'criteria_id',
-                render: function(data) {
-                    return data === 1 ? 'Soal Psikotes' : 'Soal Soft Skill';
-                }
+                data: 'criteria_name',
+                name: 'criteria_name'
             },
             {
-                data: 'pertanyaan_text',
-                name: 'pertanyaan_text'
+                data: 'name',
+                name: 'name'
             },
             {
-                data: 'jawaban_a',
-                name: 'jawaban_a'
+                data: 'min_score',
+                name: 'min_score'
             },
             {
-                data: 'jawaban_b',
-                name: 'jawaban_b'
+                data: 'max_score',
+                name: 'max_score'
             },
-            {
-                data: 'jawaban_c',
-                name: 'jawaban_c'
-            },
-            {
-                data: 'jawaban_d',
-                name: 'jawaban_d'
-            },
-            {
-                data: 'jawaban_benar',
-                name: 'jawaban_benar',
-            },
+
+
             {
                 data: 'action',
                 name: 'action',
@@ -101,10 +87,10 @@ $j(document).ready(function() {
 
     // Delete button handling
     $j(document).on('click', '.delete-btn', function() {
-        var soalId = $j(this).data('id');
+        var subkriteriaId = $j(this).data('id');
         Swal.fire({
             title: 'Apakah Anda yakin?',
-            text: "Soal ini akan dihapus!",
+            text: "kriteria ini akan dihapus!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Hapus',
@@ -112,7 +98,7 @@ $j(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $j.ajax({
-                    url: '/master-soal/' + soalId,
+                    url: '/master-subkriteria/' + subkriteriaId,
                     type: 'DELETE',
                     data: {
                         _token: "{{ csrf_token() }}"
@@ -123,7 +109,8 @@ $j(document).ready(function() {
 
                     },
                     error: function() {
-                        Swal.fire('Gagal!', 'Soal tidak dapat dihapus.', 'error');
+                        Swal.fire('Gagal!', 'kriteria tidak dapat dihapus.',
+                            'error');
                     }
                 });
             }
@@ -152,5 +139,6 @@ $j(document).ready(function() {
     @endif
 });
 </script>
+
 
 @endsection
