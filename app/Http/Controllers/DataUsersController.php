@@ -53,6 +53,7 @@ class DataUsersController extends Controller
         $user->tgllahir = $validatedData['tgllahir'] ?? $user->tgllahir;
         $user->pendidikan = $validatedData['pendidikan'] ?? $user->pendidikan;
         $user->sosmed = $validatedData['sosmed'] ?? $user->sosmed;
+        $user->status = 'Lengkap';
 
         // Jika file CV ada dalam request
         if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
