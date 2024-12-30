@@ -14,9 +14,11 @@
                     <!-- Kategori Soal -->
                     <div class="mb-3">
                         <label for="criteria_id" class="form-label">Kategori Soal</label>
-                        <select id="criteria_id" name="criteria_id" class="form-select" required>
-                            <option value="1">Soal Psikotes</option>
-                            <option value="2">Soal Soft Skill</option>
+                        <select class="form-control" id="criteria" name="criteria_id" required>
+                            <option value="" disabled selected>Pilih Kriteria</option>
+                            @foreach($kriteria as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -77,31 +79,31 @@
 </div>
 <!-- /.container-fluid -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const inputJawabanA = document.getElementById('jawaban_a');
-        const inputJawabanB = document.getElementById('jawaban_b');
-        const inputJawabanC = document.getElementById('jawaban_c');
-        const inputJawabanD = document.getElementById('jawaban_d');
-        const dropdownJawabanBenar = document.getElementById('jawaban_benar');
+document.addEventListener('DOMContentLoaded', function() {
+    const inputJawabanA = document.getElementById('jawaban_a');
+    const inputJawabanB = document.getElementById('jawaban_b');
+    const inputJawabanC = document.getElementById('jawaban_c');
+    const inputJawabanD = document.getElementById('jawaban_d');
+    const dropdownJawabanBenar = document.getElementById('jawaban_benar');
 
-        const checkAllInputsFilled = () => {
-            // Periksa apakah semua inputan jawaban sudah terisi
-            if (
-                inputJawabanA.value.trim() !== '' &&
-                inputJawabanB.value.trim() !== '' &&
-                inputJawabanC.value.trim() !== '' &&
-                inputJawabanD.value.trim() !== ''
-            ) {
-                dropdownJawabanBenar.disabled = false;
-            } else {
-                dropdownJawabanBenar.disabled = true;
-            }
-        };
+    const checkAllInputsFilled = () => {
+        // Periksa apakah semua inputan jawaban sudah terisi
+        if (
+            inputJawabanA.value.trim() !== '' &&
+            inputJawabanB.value.trim() !== '' &&
+            inputJawabanC.value.trim() !== '' &&
+            inputJawabanD.value.trim() !== ''
+        ) {
+            dropdownJawabanBenar.disabled = false;
+        } else {
+            dropdownJawabanBenar.disabled = true;
+        }
+    };
 
-        // Tambahkan event listener untuk memantau perubahan pada semua input
-        [inputJawabanA, inputJawabanB, inputJawabanC, inputJawabanD].forEach(input => {
-            input.addEventListener('input', checkAllInputsFilled);
-        });
+    // Tambahkan event listener untuk memantau perubahan pada semua input
+    [inputJawabanA, inputJawabanB, inputJawabanC, inputJawabanD].forEach(input => {
+        input.addEventListener('input', checkAllInputsFilled);
     });
+});
 </script>
 @endsection

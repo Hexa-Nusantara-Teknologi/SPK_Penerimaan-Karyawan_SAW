@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pertanyaan;
+use App\Models\Criteria;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -15,7 +16,8 @@ class SoalController extends Controller
 
     public function create()
     {
-        return view('Master-Soal.create-soal');
+        $kriteria = Criteria::all();
+        return view('Master-Soal.create-soal', compact('kriteria'));
     }
 
     public function getData(Request $request)
