@@ -7,6 +7,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DataUsersController;
 use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\PengerjaanTesController;
 use App\Http\Controllers\SubcriteriaController;
 use Dflydev\DotAccessData\Data;
 
@@ -49,9 +50,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Route Mulai Pengerjaan Test - User
-Route::get('/pengerjaan-tes', function () {
-    return view('Pengerjaan-Tes.index');
-});
+Route::get('/pengerjaan-tes', [PengerjaanTesController::class, 'index'])->name('index');
+Route::get('/tes', [PengerjaanTesController::class, 'kerjakan'])->name('kerjakan');
 
 
 // Route Mulai Master Soal -Admin
@@ -100,5 +100,6 @@ Route::get('/master-users/data', [UsersController::class, 'getData'])->name('use
 Route::delete('/master-users/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 Route::get('/master-users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
 Route::put('/master-users/{id}', [UsersController::class, 'update'])->name('users.update');
+
 
 Auth::routes();

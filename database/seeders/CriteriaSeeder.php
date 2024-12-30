@@ -15,11 +15,11 @@ class CriteriaSeeder extends Seeder
     public function run(): void
     {
         Criteria::create([
-            'name' => 'Soal Psikotes',
+            'name' => 'Psikotes',
             'weight' => 20,
         ]);
         Criteria::create([
-            'name' => 'Soal Soft Skill',
+            'name' => 'Soft Skill',
             'weight' => 20,
         ]);
         Criteria::create([

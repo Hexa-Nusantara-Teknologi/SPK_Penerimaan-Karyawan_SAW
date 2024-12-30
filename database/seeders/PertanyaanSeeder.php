@@ -14,28 +14,69 @@ class PertanyaanSeeder extends Seeder
      */
     public function run(): void
     {
-        Pertanyaan::create([
-            'criteria_id' => 1, // Kategori: Soal Psikotes
-            'pertanyaan_text' => 'Apakah warna langit di siang hari?',
-            'jawaban_a' => 'Biru',
-            'jawaban_b' => 'Hijau',
-            'jawaban_c' => 'Merah',
-            'jawaban_d' => 'Kuning',
-            'jawaban_benar' => 'jawaban_a',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
 
-        Pertanyaan::create([
-            'criteria_id' => 2, // Kategori: Soal Soft Skill
-            'pertanyaan_text' => 'Apa yang dilakukan ketika seseorang meminta bantuan?',
-            'jawaban_a' => 'Mengabaikan',
-            'jawaban_b' => 'Membantu dengan tulus',
-            'jawaban_c' => 'Menunda-nunda',
-            'jawaban_d' => 'Meminta orang lain untuk membantu',
-            'jawaban_benar' => 'jawaban_b',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Apa yang Anda lakukan jika Anda menghadapi masalah di tempat kerja?', 'jawaban_a' => 'Mengabaikannya', 'jawaban_b' => 'Mencari solusi', 'jawaban_c' => 'Mengeluh kepada rekan kerja', 'jawaban_d' => 'Menyerah', 'jawaban_benar' => 'jawaban_b']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Bagaimana Anda mengatasi stres?', 'jawaban_a' => 'Berolahraga', 'jawaban_b' => 'Tidur', 'jawaban_c' => 'Makan berlebihan', 'jawaban_d' => 'Berkumpul dengan teman', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Apa yang Anda lakukan saat menghadapi kritik?', 'jawaban_a' => 'Menerima dengan baik', 'jawaban_b' => 'Marah', 'jawaban_c' => 'Mengabaikan', 'jawaban_d' => 'Membalas kritik', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk meningkatkan keterampilan Anda?', 'jawaban_a' => 'Mengikuti pelatihan', 'jawaban_b' => 'Tidak melakukan apa-apa', 'jawaban_c' => 'Bergantung pada orang lain', 'jawaban_d' => 'Mengabaikan', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Bagaimana Anda beradaptasi dengan perubahan?', 'jawaban_a' => 'Dengan cepat', 'jawaban_b' => 'Dengan lambat', 'jawaban_c' => 'Tidak mau beradaptasi', 'jawaban_d' => 'Mengeluh', 'jawaban_benar' => 'jawaban_a'],);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Apa yang Anda lakukan saat bekerja dalam tim?', 'jawaban_a' => 'Berkomunikasi dengan baik', 'jawaban_b' => 'Bekerja sendiri', 'jawaban_c' => 'Mengabaikan anggota tim', 'jawaban_d' => 'Bersikap egois', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Apa yang Anda lakukan jika Anda tidak setuju dengan keputusan atasan?', 'jawaban_a' => 'Menyampaikan pendapat dengan sopan', 'jawaban_b' => 'Menentang secara terbuka', 'jawaban_c' => 'Mengabaikan', 'jawaban_d' => 'Mengeluh kepada rekan kerja', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Bagaimana Anda mengelola waktu Anda?', 'jawaban_a' => 'Membuat jadwal', 'jawaban_b' => 'Bekerja tanpa rencana', 'jawaban_c' => 'Menunda-nunda', 'jawaban_d' => 'Mengabaikan tenggat waktu', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Apa yang Anda lakukan saat menghadapi kegagalan?', 'jawaban_a' => 'Belajar dari kesalahan', 'jawaban_b' => 'Menyerah', 'jawaban_c' => 'Menyalahkan orang lain', 'jawaban_d' => 'Mengabaikan', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 1, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk menjaga motivasi?', 'jawaban_a' => 'Menetapkan tujuan', 'jawaban_b' => 'Tidak melakukan apa-apa', 'jawaban_c' => 'Membandingkan diri dengan orang lain', 'jawaban_d' => 'Mengabaikan', 'jawaban_benar' => 'jawaban_a']);
+
+
+
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk membangun hubungan baik dengan rekan kerja?', 'jawaban_a' => 'Berkomunikasi secara terbuka', 'jawaban_b' => 'Menghindari interaksi', 'jawaban_c' => 'Bersikap acuh tak acuh', 'jawaban_d' => 'Berkelahi', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Bagaimana cara Anda menangani konflik?', 'jawaban_a' => 'Mendengarkan kedua belah pihak', 'jawaban_b' => 'Mengabaikan masalah', 'jawaban_c' => 'Memihak salah satu pihak', 'jawaban_d' => 'Berkata kasar', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk meningkatkan kemampuan komunikasi?', 'jawaban_a' => 'Berlatih berbicara di depan umum', 'jawaban_b' => 'Tidak berlatih sama sekali', 'jawaban_c' => 'Menghindari berbicara', 'jawaban_d' => 'Berkata sembarangan', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Bagaimana Anda memberikan umpan balik yang konstruktif?', 'jawaban_a' => 'Dengan cara yang positif', 'jawaban_b' => 'Dengan cara yang menyakitkan', 'jawaban_c' => 'Mengabaikan umpan balik', 'jawaban_d' => 'Hanya memberikan kritik', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk menjadi pemimpin yang baik?', 'jawaban_a' => 'Memberikan contoh yang baik', 'jawaban_b' => 'Mengabaikan tim', 'jawaban_c' => 'Bersikap otoriter', 'jawaban_d' => 'Tidak mendengarkan', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Bagaimana Anda menunjukkan empati kepada orang lain?', 'jawaban_a' => 'Mendengarkan dengan penuh perhatian', 'jawaban_b' => 'Mengabaikan perasaan orang lain', 'jawaban_c' => 'Bersikap acuh tak acuh', 'jawaban_d' => 'Menyalahkan orang lain', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk mengatasi tekanan?', 'jawaban_a' => 'Mengatur waktu dengan baik', 'jawaban_b' => 'Menyerah', 'jawaban_c' => 'Berkeluh', 'jawaban_d' => 'Mengabaikan masalah', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Bagaimana Anda berkolaborasi dengan orang lain?', 'jawaban_a' => 'Bekerja sama untuk mencapai tujuan', 'jawaban_b' => 'Bekerja sendiri', 'jawaban_c' => 'Mengabaikan pendapat orang lain', 'jawaban_d' => 'Bersikap egois', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk mengembangkan jaringan profesional?', 'jawaban_a' => 'Menghadiri acara networking', 'jawaban_b' => 'Tidak berinteraksi dengan orang lain', 'jawaban_c' => 'Mengabaikan kesempatan', 'jawaban_d' => 'Bersikap tertutup', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 2, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk menjaga keseimbangan antara pekerjaan dan kehidupan pribadi?', 'jawaban_a' => 'Mengatur waktu dengan baik', 'jawaban_b' => 'Bekerja terus-menerus', 'jawaban_c' => 'Mengabaikan kehidupan pribadi', 'jawaban_d' => 'Tidak memiliki hobi', 'jawaban_benar' => 'jawaban_a']);
+
+
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa yang Anda ketahui tentang radikalisasi?', 'jawaban_a' => 'Proses perubahan pandangan ekstrem', 'jawaban_b' => 'Proses pendidikan', 'jawaban_c' => 'Proses pengembangan diri', 'jawaban_d' => 'Proses sosial', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa yang dapat menjadi faktor penyebab radikalisasi?', 'jawaban_a' => 'Keterasingan sosial', 'jawaban_b' => 'Kedekatan dengan keluarga', 'jawaban_c' => 'Pendidikan yang baik', 'jawaban_d' => 'Lingkungan yang positif', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Bagaimana cara mencegah radikalisasi?', 'jawaban_a' => 'Meningkatkan pendidikan dan kesadaran', 'jawaban_b' => 'Mengabaikan masalah', 'jawaban_c' => 'Mendukung tindakan ekstrem', 'jawaban_d' => 'Menutup diri dari informasi', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa yang dimaksud dengan ideologi ekstrem?', 'jawaban_a' => 'Pandangan yang menolak keberagaman', 'jawaban_b' => 'Pandangan yang inklusif', 'jawaban_c' => 'Pandangan yang moderat', 'jawaban_d' => 'Pandangan yang netral', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa dampak dari radikalisasi terhadap masyarakat?', 'jawaban_a' => 'Meningkatkan konflik sosial', 'jawaban_b' => 'Meningkatkan kerukunan', 'jawaban_c' => 'Meningkatkan kesejahteraan', 'jawaban_d' => 'Meningkatkan toleransi', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa peran media dalam radikalisasi?', 'jawaban_a' => 'Menyebarkan informasi ekstrem', 'jawaban_b' => 'Mendukung perdamaian', 'jawaban_c' => 'Meningkatkan kesadaran', 'jawaban_d' => 'Menyebarkan berita positif', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa yang dapat dilakukan individu untuk melawan radikalisasi?', 'jawaban_a' => 'Meningkatkan toleransi dan dialog', 'jawaban_b' => 'Mengabaikan perbedaan', 'jawaban_c' => 'Mendukung tindakan kekerasan', 'jawaban_d' => 'Menutup diri dari orang lain', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa yang dimaksud dengan deradikalisasi?', 'jawaban_a' => 'Proses mengubah pandangan ekstrem menjadi moderat', 'jawaban_b' => 'Proses memperkuat ideologi ekstrem', 'jawaban_c' => 'Proses pendidikan', 'jawaban_d' => 'Proses sosial', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa yang menjadi ciri-ciri kelompok radikal?', 'jawaban_a' => 'Menolak dialog dan keberagaman', 'jawaban_b' => 'Mendukung kerukunan', 'jawaban_c' => 'Mendukung pendidikan', 'jawaban_d' => 'Mendukung kebebasan berpendapat', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 4, 'pertanyaan_text' => 'Apa yang dapat dilakukan pemerintah untuk mencegah radikalisasi?', 'jawaban_a' => 'Meningkatkan pendidikan dan kesadaran masyarakat', 'jawaban_b' => 'Mengabaikan masalah', 'jawaban_c' => 'Mendukung tindakan ekstrem', 'jawaban_d' => 'Menutup akses informasi', 'jawaban_benar' => 'jawaban_a']);
+
+
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa yang dimaksud dengan terorisme?', 'jawaban_a' => 'Tindakan kekerasan untuk menakut-nakuti masyarakat', 'jawaban_b' => 'Protes damai', 'jawaban_c' => 'Kegiatan sosial', 'jawaban_d' => 'Kegiatan politik', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa yang menjadi tujuan utama terorisme?', 'jawaban_a' => 'Menciptakan ketakutan dan kekacauan', 'jawaban_b' => 'Mendukung perdamaian', 'jawaban_c' => 'Meningkatkan kesejahteraan', 'jawaban_d' => 'Mendukung dialog', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa yang dapat menjadi penyebab terorisme?', 'jawaban_a' => 'Ketidakpuasan sosial dan politik', 'jawaban_b' => 'Kesejahteraan ekonomi', 'jawaban_c' => 'Pendidikan yang baik', 'jawaban_d' => 'Kedekatan dengan keluarga', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Bagaimana cara mencegah terorisme?', 'jawaban_a' => 'Meningkatkan kerjasama internasional', 'jawaban_b' => 'Mengabaikan masalah', 'jawaban_c' => 'Mendukung tindakan ekstrem', 'jawaban_d' => 'Menutup akses informasi', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa dampak dari terorisme terhadap masyarakat?', 'jawaban_a' => 'Meningkatkan ketidakamanan', 'jawaban_b' => 'Meningkatkan kerukunan', 'jawaban_c' => 'Meningkatkan kesejahteraan', 'jawaban_d' => 'Meningkatkan toleransi', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa peran media dalam isu terorisme?', 'jawaban_a' => 'Menyebarkan informasi dan meningkatkan kesadaran', 'jawaban_b' => 'Mendukung tindakan kekerasan', 'jawaban_c' => 'Mengabaikan isu', 'jawaban_d' => 'Menyebarkan berita positif', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa yang dapat dilakukan individu untuk melawan terorisme?', 'jawaban_a' => 'Meningkatkan kesadaran dan toleransi', 'jawaban_b' => 'Mengabaikan perbedaan', 'jawaban_c' => 'Mendukung tindakan kekerasan', 'jawaban_d' => 'Menutup diri dari orang lain', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa yang dimaksud dengan radikalisasi dalam konteks terorisme?', 'jawaban_a' => 'Proses perubahan pandangan ekstrem yang dapat mengarah pada kekerasan', 'jawaban_b' => 'Proses pendidikan', 'jawaban_c' => 'Proses sosial', 'jawaban_d' => 'Proses pengembangan diri', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa yang menjadi ciri-ciri kelompok teroris?', 'jawaban_a' => 'Menggunakan kekerasan untuk mencapai tujuan', 'jawaban_b' => 'Mendukung dialog', 'jawaban_c' => 'Mendukung kerukunan', 'jawaban_d' => 'Mendukung pendidikan', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 5, 'pertanyaan_text' => 'Apa yang dapat dilakukan pemerintah untuk mencegah terorisme?', 'jawaban_a' => 'Meningkatkan keamanan dan intelijen', 'jawaban_b' => 'Mengabaikan masalah', 'jawaban_c' => 'Mendukung tindakan ekstrem', 'jawaban_d' => 'Menutup akses informasi', 'jawaban_benar' => 'jawaban_a']);
+
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Apa yang Anda pelajari dari pengalaman kerja sebelumnya?', 'jawaban_a' => 'Keterampilan baru', 'jawaban_b' => 'Tidak ada yang berguna', 'jawaban_c' => 'Hanya pengalaman negatif', 'jawaban_d' => 'Tidak ada pengalaman', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Bagaimana Anda menangani tantangan di tempat kerja?', 'jawaban_a' => 'Mencari solusi', 'jawaban_b' => 'Menyerah', 'jawaban_c' => 'Mengabaikan masalah', 'jawaban_d' => 'Menyalahkan orang lain', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk meningkatkan kinerja di tempat kerja?', 'jawaban_a' => 'Mengikuti pelatihan', 'jawaban_b' => 'Tidak melakukan apa-apa', 'jawaban_c' => 'Bergantung pada orang lain', 'jawaban_d' => 'Mengabaikan tanggung jawab', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Bagaimana Anda beradaptasi dengan lingkungan kerja yang baru?', 'jawaban_a' => 'Mempelajari budaya perusahaan', 'jawaban_b' => 'Menolak untuk beradaptasi', 'jawaban_c' => 'Mengabaikan rekan kerja', 'jawaban_d' => 'Bersikap acuh tak acuh', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Apa yang Anda lakukan jika Anda tidak setuju dengan keputusan atasan?', 'jawaban_a' => 'Menyampaikan pendapat dengan sopan', 'jawaban_b' => 'Menentang secara terbuka', 'jawaban_c' => 'Mengabaikan keputusan', 'jawaban_d' => 'Mengeluh kepada rekan kerja', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Bagaimana Anda mengelola waktu Anda di tempat kerja?', 'jawaban_a' => 'Membuat daftar tugas', 'jawaban_b' => 'Bekerja tanpa rencana', 'jawaban_c' => 'Menunda-nunda', 'jawaban_d' => 'Mengabaikan tenggat waktu', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Apa yang Anda lakukan untuk menjaga hubungan baik dengan rekan kerja?', 'jawaban_a' => 'Berkomunikasi secara terbuka', 'jawaban_b' => 'Menghindari interaksi', 'jawaban_c' => 'Bersikap acuh tak acuh', 'jawaban_d' => 'Berkelahi', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Apa yang Anda lakukan saat menghadapi deadline yang ketat?', 'jawaban_a' => 'Membuat rencana kerja', 'jawaban_b' => 'Menyerah', 'jawaban_c' => 'Mengabaikan tenggat waktu', 'jawaban_d' => 'Berkeluh', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Apa yang Anda pelajari dari pengalaman kerja sebelumnya?', 'jawaban_a' => 'Keterampilan baru', 'jawaban_b' => 'Tidak ada yang berguna', 'jawaban_c' => 'Hanya pengalaman negatif', 'jawaban_d' => 'Tidak ada pengalaman', 'jawaban_benar' => 'jawaban_a']);
+        Pertanyaan::create(['criteria_id' => 6, 'pertanyaan_text' => 'Bagaimana Anda menangani umpan balik dari atasan?', 'jawaban_a' => 'Menerima dengan baik dan memperbaiki diri', 'jawaban_b' => 'Menolak umpan balik', 'jawaban_c' => 'Mengabaikan', 'jawaban_d' => 'Menyalahkan orang lain', 'jawaban_benar' => 'jawaban_a']);
+
+
+
+
     }
 }

@@ -79,7 +79,7 @@
     <li class="nav-item @if(request()->is('riwayat-pengisian')) active @endif">
         <a class="nav-link" href="{{ url('riwayat-pengisian') }}">
             <i class="fas fa-fw fa-history"></i>
-            <span>Riwayat Pengisian Soal</span></a>
+            <span>Riwayat Pengisian</span></a>
     </li>
     @endif
     @if (auth()->user()->role == 'Admin')
