@@ -86,6 +86,9 @@ Route::put('/master-subkriteria/{id}', [SubcriteriaController::class, 'update'])
 Route::get('/riwayat-pengisian', function () {
     return view('Riwayat-Pengisian.index');
 });
+Route::get('/riwayat-pengisian-detail', function () {
+    return view('Riwayat-Pengisian.detail');
+})->name('riwayat.detail');
 
 // Route Mulai Riwayat Ranking - Admin
 Route::get('/ranking', function () {
