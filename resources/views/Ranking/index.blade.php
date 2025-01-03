@@ -2,44 +2,17 @@
 @section('content')
 <div class="container-fluid mb-5">
     <div class="card">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active " href="#">Penilaian</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">bobot Penilaian</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Result</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="card">
-        <!-- <div class="card-header text-black d-flex justify-content-between align-items-center">
-            <h5>list Penilaian</h5>
-        </div> -->
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-            <h4>list Penilaian</h4>
+            <h4>Ranking</h4>
         </div>
-
-
         <div class="card-body">
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Pelamar</th>
-                        <th>Soal Psikotes</th>
-                        <th>Soal Soft Skill</th>
-                        <th>CV</th>
-                        <th>Radikalisme</th>
-                        <th>Terorisme</th>
-                        <th>Pengalaman Kerja</th>
-                        <th>Aksi</th>
+                        <th>Score</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,67 +20,10 @@
                         <td>1</td>
                         <td>John Doe</td>
                         <td>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>--Choose--</option>
-                                <option value="Sangat Baik">Sangat Baik</option>
-                                <option value="Baik">Baik</option>
-                                <option value="Cukup">Cukup</option>
-                                <option value="Buruk">Buruk</option>
-                                <option value="Sangat Buruk">Sangat Buruk</option>
-                            </select>
+                            80
                         </td>
                         <td>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>--Choose--</option>
-                                <option value="Sangat Baik">Sangat Baik</option>
-                                <option value="Baik">Baik</option>
-                                <option value="Cukup">Cukup</option>
-                                <option value="Buruk">Buruk</option>
-                                <option value="Sangat Buruk">Sangat Buruk</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>--Choose--</option>
-                                <option value="Sangat Baik">Sangat Baik</option>
-                                <option value="Baik">Baik</option>
-                                <option value="Cukup">Cukup</option>
-                                <option value="Buruk">Buruk</option>
-                                <option value="Sangat Buruk">Sangat Buruk</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>--Choose--</option>
-                                <option value="Sangat Baik">Sangat Baik</option>
-                                <option value="Baik">Baik</option>
-                                <option value="Cukup">Cukup</option>
-                                <option value="Buruk">Buruk</option>
-                                <option value="Sangat Buruk">Sangat Buruk</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>--Choose--</option>
-                                <option value="Sangat Baik">Sangat Baik</option>
-                                <option value="Baik">Baik</option>
-                                <option value="Cukup">Cukup</option>
-                                <option value="Buruk">Buruk</option>
-                                <option value="Sangat Buruk">Sangat Buruk</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>--Choose--</option>
-                                <option value="Sangat Baik">Sangat Baik</option>
-                                <option value="Baik">Baik</option>
-                                <option value="Cukup">Cukup</option>
-                                <option value="Buruk">Buruk</option>
-                                <option value="Sangat Buruk">Sangat Buruk</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Save</button>
+                            Lolos
                         </td>
                     </tr>
                 </tbody>
