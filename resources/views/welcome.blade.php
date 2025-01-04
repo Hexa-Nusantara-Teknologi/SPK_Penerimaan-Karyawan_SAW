@@ -150,7 +150,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                         <div class="stats-item d-flex align-items-center flex-column">
                             <div class="p-2">
-                                <img src="{{ asset('img/pendaftaran-online.png') }}" alt="Seleksi Administrasi"
+                                <img src="{{ asset('img/seleksi-administrasi.png') }}" alt="Seleksi Administrasi"
                                     class="img-fluid mb-2" style="max-width: 80px;">
                                 <h6 class="fw-bold mb-0">Seleksi Administrasi</h6>
                             </div>
@@ -164,7 +164,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                         <div class="stats-item d-flex align-items-center flex-column">
                             <div class="p-2">
-                                <img src="{{ asset('img/pendaftaran-online.png') }}" alt="Tes Aptitude"
+                                <img src="{{ asset('img/seleksi-akademik.png') }}" alt="Tes Aptitude"
                                     class="img-fluid mb-2" style="max-width: 80px;">
                                 <h6 class="fw-bold mb-0">Seleksi Akademik</h6>
                             </div>
@@ -178,7 +178,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                         <div class="stats-item d-flex align-items-center flex-column">
                             <div class="p-2">
-                                <img src="{{ asset('img/pendaftaran-online.png') }}" alt="Tes Hardskill"
+                                <img src="{{ asset('img/seleksi-softskill.png') }}" alt="Tes Hardskill"
                                     class="img-fluid mb-2" style="max-width: 80px;">
                                 <h6 class="fw-bold mb-0">Seleksi Soft Skill</h6>
                             </div>
