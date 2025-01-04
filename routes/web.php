@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
 // Route Mulai Pengerjaan Test - User
 Route::get('/pengerjaan-tes', [PengerjaanTesController::class, 'index'])->name('index');
 Route::get('/tes', [PengerjaanTesController::class, 'kerjakan'])->name('kerjakan');
+Route::post('/submit-score', [PengerjaanTesController::class, 'submitScore'])->name('submit-score');
 
 
 // Route Mulai Master Soal -Admin

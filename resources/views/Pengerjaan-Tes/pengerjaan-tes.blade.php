@@ -33,38 +33,31 @@
                 <!-- Bagian Kiri -->
                 <div class="col-md-8">
                     <div class="card px-4 py-4">
-                        @foreach($pertanyaan as $key => $question)
-                        <div class="mb-4">
-                            <h5><b>Soal No. {{ $key + 1 }}</b></h5>
-                            <p>{{ $question->pertanyaan_text }}</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]"
-                                    value="jawaban_a" id="option{{ $key }}a">
-                                <label class="form-check-label"
-                                    for="option{{ $key }}a">{{ $question->jawaban_a }}</label>
+                        <form id="quiz-form" action="{{ route('submit-score') }}" method="POST">
+                            @csrf
+                            @foreach($pertanyaan as $key => $question)
+                            <div class="mb-4">
+                                <h5><b>Soal No. {{ $key + 1 }}</b></h5>
+                                <p>{{ $question->pertanyaan_text }}</p>
+                                @foreach(['a', 'b', 'c', 'd'] as $option)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]"
+                                        value="jawaban_{{ $option }}"
+                                        data-correct-answer="{{ $question->jawaban_benar }}"
+                                        id="option{{ $key }}{{ $option }}"
+                                        {{ isset($savedAnswers[$question->id]) && $savedAnswers[$question->id] == "jawaban_{$option}" ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="option{{ $key }}{{ $option }}">
+                                        {{ $question->{'jawaban_' . $option} }}
+                                    </label>
+                                </div>
+                                @endforeach
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]"
-                                    value="jawaban_b" id="option{{ $key }}b">
-                                <label class="form-check-label"
-                                    for="option{{ $key }}b">{{ $question->jawaban_b }}</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]"
-                                    value="jawaban_c" id="option{{ $key }}c">
-                                <label class="form-check-label"
-                                    for="option{{ $key }}c">{{ $question->jawaban_c }}</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]"
-                                    value="jawaban_d" id="option{{ $key }}d">
-                                <label class="form-check-label"
-                                    for="option{{ $key }}d">{{ $question->jawaban_d }}</label>
-                            </div>
-                        </div>
-                        @endforeach
+                            @endforeach
                     </div>
                 </div>
+
+
 
                 <!-- Bagian Kanan -->
                 <div class="col-md-4">
@@ -82,11 +75,56 @@
                     </div>
 
                 </div>
+
+                <!-- Tombol Submit (Cek Jawaban) -->
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <button id="submit-button" class="btn btn-primary" style="display: none;">Submit</button>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
 
     </div>
 </div>
-<!-- /.cont
-ainer-fluid -->
+<!-- /.container-fluid -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Menyembunyikan tombol submit pada awalnya
+    var submitButton = document.getElementById('submit-button');
+    submitButton.style.display = 'none';
+
+    // Mengambil semua elemen radio button
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    // Fungsi untuk memeriksa apakah semua soal sudah dijawab
+    function checkAllAnswered() {
+        var allAnswered = true;
+
+        // Mengecek setiap radio button
+        radioButtons.forEach(function(radio) {
+            var questionId = radio.name.split('[')[1].split(']')[0]; // Mendapatkan ID soal
+            var questionAnswered = document.querySelector('input[name="answers[' + questionId +
+                ']"]:checked');
+
+            if (!questionAnswered) {
+                allAnswered = false; // Jika ada soal yang belum dijawab
+            }
+        });
+
+        // Menampilkan tombol submit jika semua soal sudah dijawab
+        if (allAnswered) {
+            submitButton.style.display = 'block';
+        } else {
+            submitButton.style.display = 'none';
+        }
+    }
+
+    // Menambahkan event listener untuk setiap radio button
+    radioButtons.forEach(function(radio) {
+        radio.addEventListener('change', checkAllAnswered);
+    });
+});
+</script>
 @endsection
