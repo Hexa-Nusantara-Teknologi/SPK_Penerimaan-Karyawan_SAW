@@ -17,10 +17,8 @@ class PengerjaanTesController extends Controller
 
     public function kerjakan(Request $request){
 
-       // Ambil semua pertanyaan beserta data kriterianya
     $pertanyaan = Pertanyaan::with('criteria')->get();
 
-    // Kelompokkan pertanyaan berdasarkan criteria_id
     $groupedPertanyaan = $pertanyaan->groupBy('criteria_id');
         return view('Pengerjaan-Tes.pengerjaan-tes', compact('groupedPertanyaan'));
     }
