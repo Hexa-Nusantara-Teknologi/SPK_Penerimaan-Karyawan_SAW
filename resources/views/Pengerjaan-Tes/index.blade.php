@@ -22,7 +22,11 @@
                 Pastikan Anda berada di tempat yang nyaman dan memiliki waktu cukup untuk menyelesaikan tes ini.
             </p>
             <div class="d-flex justify-content-center">
-                <a href="{{'/tes'}}" class="btn btn-success btn-lg">Mulai Tes</a>
+                @if($statusText == 1)
+                <button class="btn btn-success btn-lg" disabled>Anda telah mengerjakan tes</button>
+                @else
+                <a href="{{ '/tes' }}" class="btn btn-success btn-lg">Mulai Tes</a>
+                @endif
             </div>
         </div>
         <div class="card-footer text-center">

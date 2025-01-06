@@ -20,4 +20,9 @@ class Pertanyaan extends Model
         'jawaban_d',
         'jawaban_benar',
     ];
+
+    public function criteria()
+    {
+        return $this->belongsTo(Criteria::class, 'criteria_id');
+    }
 }

@@ -6,13 +6,7 @@
     <div class="row"
         style="background-color: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <div class="col-sm-4">
-            <header class="bg-primary text-white py-3 mb-4">
-                <div class="container">
-                    <h1 class="m-0">Soal {{ $selectedCriteria ? $selectedCriteria->name : 'Semua' }}</h1>
 
-                </div>
-
-            </header>
         </div>
 
         <div class="col-sm-4">
@@ -31,58 +25,53 @@
         <div class=" container mt-3">
             <div class="row">
                 <!-- Bagian Kiri -->
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card px-4 py-4">
                         <form id="quiz-form" action="{{ route('submit-score') }}" method="POST">
                             @csrf
-                            @foreach($pertanyaan as $key => $question)
-                            <div class="mb-4">
-                                <h5><b>Soal No. {{ $key + 1 }}</b></h5>
-                                <p>{{ $question->pertanyaan_text }}</p>
-                                @foreach(['a', 'b', 'c', 'd'] as $option)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]"
-                                        value="jawaban_{{ $option }}"
-                                        data-correct-answer="{{ $question->jawaban_benar }}"
-                                        id="option{{ $key }}{{ $option }}"
-                                        {{ isset($savedAnswers[$question->id]) && $savedAnswers[$question->id] == "jawaban_{$option}" ? 'checked' : '' }}>
+                            @foreach ($groupedPertanyaan as $criteriaId => $questions)
+                            <div class="container mb-5">
+                                <h1 class=" m-0 mb-4 text-center">
+                                    <b style="color: #4e73df; text-decoration: underline; text-align:center;">Soal
+                                        {{ $questions->first()->criteria->name ?? 'Tanpa Kriteria' }}</b>
+                                </h1>
 
-                                    <label class="form-check-label" for="option{{ $key }}{{ $option }}">
-                                        {{ $question->{'jawaban_' . $option} }}
-                                    </label>
+                                @foreach ($questions as $key => $question)
+                                <div class="mb-4">
+                                    <h5><b>Soal No. {{ $key + 1 }}</b></h5>
+                                    <p>{{ $question->pertanyaan_text }}</p>
+
+                                    @foreach (['a', 'b', 'c', 'd'] as $option)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]"
+                                            value="jawaban_{{ $option }}" id="option{{ $question->id }}{{ $option }}"
+                                            {{ isset($savedAnswers[$question->id]) && $savedAnswers[$question->id] == "jawaban_{$option}" ? 'checked' : '' }}>
+
+                                        <label class="form-check-label" for="option{{ $question->id }}{{ $option }}">
+                                            {{ $question->{'jawaban_' . $option} }}
+                                        </label>
+                                    </div>
+                                    @endforeach
                                 </div>
                                 @endforeach
                             </div>
+                            <hr>
                             @endforeach
+                            <!-- Tombol Submit (Cek Jawaban) -->
+                            <div class="row mt-4">
+                                <div class="col-md-12 text-center">
+                                    <button id="submit-button" class="btn btn-primary"
+                                        style="display: none;">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
 
 
-                <!-- Bagian Kanan -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Pilih Topik Soal</h5>
-                            @foreach($criteria as $criterion)
-                            <a href="{{ route('kerjakan', ['criteria_id' => $criterion->id]) }}"
-                                class="btn btn-outline-secondary m-1">
-                                {{ $criterion->name }}
-                            </a>
-                            @endforeach
 
-                        </div>
-                    </div>
 
-                </div>
-
-                <!-- Tombol Submit (Cek Jawaban) -->
-                <div class="row mt-4">
-                    <div class="col-md-12 text-center">
-                        <button id="submit-button" class="btn btn-primary" style="display: none;">Submit</button>
-                    </div>
-                </div>
-                </form>
             </div>
         </div>
 
@@ -115,16 +104,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Menampilkan tombol submit jika semua soal sudah dijawab
         if (allAnswered) {
-            submitButton.style.display = 'block';
+            submitButton.style.display = 'block'; // Tampilkan tombol submit
         } else {
-            submitButton.style.display = 'none';
+            submitButton.style.display = 'none'; // Sembunyikan tombol submit
         }
     }
 
     // Menambahkan event listener untuk setiap radio button
     radioButtons.forEach(function(radio) {
-        radio.addEventListener('change', checkAllAnswered);
+        radio.addEventListener('change', checkAllAnswered); // Cek ketika ada perubahan
     });
+
+    // Inisialisasi untuk memeriksa status awal jawaban
+    checkAllAnswered();
 });
 </script>
+
+
 @endsection
