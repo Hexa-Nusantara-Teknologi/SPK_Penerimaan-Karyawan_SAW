@@ -57,7 +57,6 @@
                             </div>
                             <hr>
                             @endforeach
-                            <!-- Tombol Submit (Cek Jawaban) -->
                             <div class="row mt-4">
                                 <div class="col-md-12 text-center">
                                     <button id="submit-button" class="btn btn-primary"
@@ -77,45 +76,37 @@
 
     </div>
 </div>
-<!-- /.container-fluid -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Menyembunyikan tombol submit pada awalnya
     var submitButton = document.getElementById('submit-button');
     submitButton.style.display = 'none';
 
-    // Mengambil semua elemen radio button
     var radioButtons = document.querySelectorAll('input[type="radio"]');
 
-    // Fungsi untuk memeriksa apakah semua soal sudah dijawab
     function checkAllAnswered() {
         var allAnswered = true;
 
-        // Mengecek setiap radio button
         radioButtons.forEach(function(radio) {
-            var questionId = radio.name.split('[')[1].split(']')[0]; // Mendapatkan ID soal
+            var questionId = radio.name.split('[')[1].split(']')[0];
             var questionAnswered = document.querySelector('input[name="answers[' + questionId +
                 ']"]:checked');
 
             if (!questionAnswered) {
-                allAnswered = false; // Jika ada soal yang belum dijawab
+                allAnswered = false;
             }
         });
 
-        // Menampilkan tombol submit jika semua soal sudah dijawab
         if (allAnswered) {
-            submitButton.style.display = 'block'; // Tampilkan tombol submit
+            submitButton.style.display = 'block';
         } else {
-            submitButton.style.display = 'none'; // Sembunyikan tombol submit
+            submitButton.style.display = 'none';
         }
     }
 
-    // Menambahkan event listener untuk setiap radio button
     radioButtons.forEach(function(radio) {
-        radio.addEventListener('change', checkAllAnswered); // Cek ketika ada perubahan
+        radio.addEventListener('change', checkAllAnswered);
     });
 
-    // Inisialisasi untuk memeriksa status awal jawaban
     checkAllAnswered();
 });
 </script>
