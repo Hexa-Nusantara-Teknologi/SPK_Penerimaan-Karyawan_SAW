@@ -24,4 +24,18 @@ class UserActivityModel extends Model
         'start_time',
         'end_time'
     ];
+
+    /**
+     * Relasi dengan model User
+     * Menghubungkan user_id dengan id di tabel users
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function ranking()
+    {
+        return $this->hasOne(RankingModel::class, 'user_activity_id', 'id');
+    }
 }

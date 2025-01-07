@@ -19,12 +19,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <th>1</th>
-                    <th>Johannes</th>
-                    <th>Sudah Mengerjakan Tes</th>
-                    <th>
-                        <a href="{{ route('riwayat.detail') }}" class="btn btn-info btn-sm mr-2">Detail</a>
-                    </th>
                 </tbody>
             </table>
         </div>
@@ -44,7 +38,7 @@
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- <script>
+<script>
     var $j = jQuery.noConflict();
 
     $j(document).ready(function() {
@@ -52,7 +46,7 @@
         var table = $j('#soal-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('soal.data') }}",
+            ajax: "{{ route('riwayat.data') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -60,12 +54,20 @@
                     searchable: false
                 },
                 {
-                    data: 'nama',
+                    data: 'user_id',
                     name: 'nama'
                 },
                 {
-                    data: 'status',
-                    name: 'status'
+                    data: 'status_text',
+                    name: 'status',
+                    render: function(data, type, row) {
+                        // Mengecek jika status_text = 1, maka ubah menjadi "sudah melakukan test"
+                        if (data == 1) {
+                            return 'Sudah melakukan test';
+                        }
+                        // Jika bukan 1, kembalikan "belum melakukan test"
+                        return "Belum melakukan test";
+                    }
                 },
                 {
                     data: 'action',
@@ -76,29 +78,7 @@
 
             ]
         });
-
-
-        // Flash message handling with SweetAlert2
-        @if(session('status') === 'success')
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: '{{ session('
-            message ') }}',
-            showConfirmButton: true,
-            timer: 3000
-        });
-        @elseif(session('status') === 'error')
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal!',
-            text: '{{ session('
-            message ') }}',
-            showConfirmButton: true,
-            timer: 3000
-        });
-        @endif
     });
-</script> -->
+</script>
 
 @endsection

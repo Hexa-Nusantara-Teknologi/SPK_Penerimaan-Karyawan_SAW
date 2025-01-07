@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DataUsersController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\PengerjaanTesController;
+use App\Http\Controllers\RankingController;
+use App\Http\Controllers\RiwayatPengisianController;
 use App\Http\Controllers\SubcriteriaController;
 use Dflydev\DotAccessData\Data;
 
@@ -40,10 +42,6 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 // Route Mulai Data User
-// Route::get('/data-user', function () {
-//     return view('User/form-data-diri');
-// });
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/data-user', [DataUsersController::class, 'index'])->name('dataUser.index');
     Route::post('/data-user/update', [DataUsersController::class, 'update'])->name('user.update');
@@ -53,7 +51,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/pengerjaan-tes', [PengerjaanTesController::class, 'index'])->name('index');
 Route::get('/tes', [PengerjaanTesController::class, 'kerjakan'])->name('kerjakan');
 Route::post('/submit-score', [PengerjaanTesController::class, 'submitScore'])->name('submit-score');
-
 
 // Route Mulai Master Soal -Admin
 Route::get('/master-soal', [SoalController::class, 'index'])->name('soal.index');
@@ -82,19 +79,15 @@ Route::delete('/master-subkriteria/{id}', [SubcriteriaController::class, 'destro
 Route::get('/master-subkriteria/{id}/edit', [SubcriteriaController::class, 'edit'])->name('subkriteria.edit');
 Route::put('/master-subkriteria/{id}', [SubcriteriaController::class, 'update'])->name('subkriteria.update');
 
-
 // Route Mulai Riwayat Pengisian Soal - Admin
-Route::get('/riwayat-pengisian', function () {
-    return view('Riwayat-Pengisian.index');
-});
-Route::get('/riwayat-pengisian-detail', function () {
-    return view('Riwayat-Pengisian.detail');
-})->name('riwayat.detail');
+Route::get('/riwayat-pengisian', [RiwayatPengisianController::class, 'index'])->name('riwayat.index');
+Route::get('/riwayat-pengisian/data', [RiwayatPengisianController::class, 'getData'])->name('riwayat.data');
+Route::get('/riwayat-pengisian/{id}/detail', [RiwayatPengisianController::class, 'detail'])->name('riwayat.detail');
+Route::put('/riwayat-pengisian/{id}', [RiwayatPengisianController::class, 'update'])->name('riwayat.update');
 
 // Route Mulai Riwayat Ranking - Admin
-Route::get('/ranking', function () {
-    return view('Ranking.index');
-});
+Route::get('/ranking', [RankingController::class, 'index'])->name('ranking.index');
+Route::get('/ranking/data', [RankingController::class, 'getData'])->name('ranking.data');
 
 // Route Mulai Master User - Admin
 Route::get('/master-users', [UsersController::class, 'index'])->name('users.index');

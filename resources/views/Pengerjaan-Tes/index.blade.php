@@ -21,6 +21,7 @@
             <p class="text-center">
                 Pastikan Anda berada di tempat yang nyaman dan memiliki waktu cukup untuk menyelesaikan tes ini.
             </p>
+
             <div class="d-flex justify-content-center">
                 @if($statusText == 1)
                 <button class="btn btn-success btn-lg" disabled>Anda telah mengerjakan tes</button>
@@ -36,4 +37,27 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+
+@if(Auth::user()->role == 'User' && Auth::user()->status == 'Belum Lengkap')
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            title: 'Lengkapi Data Kamu',
+            text: 'Klik tombol di bawah ini untuk melengkapi data.',
+            icon: 'info',
+            confirmButtonText: 'Lengkapi Data',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{{ url('data-user') }}";
+            }
+        });
+    });
+</script>
+@endif
 @endsection

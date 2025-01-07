@@ -39,4 +39,9 @@ class UsersModel extends Model
         'password',
         'remember_token',
     ];
+
+    public function activities()
+    {
+        return $this->hasMany(UserActivityModel::class, 'user_id', 'id');
+    }
 }
