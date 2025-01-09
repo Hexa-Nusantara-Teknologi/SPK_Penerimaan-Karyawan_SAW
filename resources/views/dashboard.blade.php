@@ -2,26 +2,32 @@
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-
-
     <!-- Content Row -->
-
     <div class="row">
         <div class="container mt-5">
             <div class="welcome-box">
+                @if($ranking)
+                @if($ranking->status == 'Lolos')
                 <div class="welcome-text">
-                    <h1>Hallo, Selamat Datang {{Auth::user()->nama}}!</h1>
-
+                    <h1>Hallo, {{ $user->nama }} Selamat Anda Lolos!</h1>
                 </div>
-
+                @elseif($ranking->status == 'Tidak Lolos')
+                <div class="welcome-text">
+                    <h1>Hallo, {{ $user->nama }} Mohon maaf Anda Belum Lolos.</h1>
+                </div>
+                @endif
+                @else
+                <div class="welcome-text">
+                    <h1>Hallo, Selamat Datang {{ $user->nama }}!</h1>
+                    <p>Status Anda belum tersedia.</p>
+                </div>
+                @endif
             </div>
         </div>
-
     </div>
 </div>
 
-@if(Auth::user()->role == 'User' && Auth::user()->status == 'Belum Lengkap')
+@if($user->role == 'User' && $user->status == 'Belum Lengkap')
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -34,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
         allowOutsideClick: false,
         allowEscapeKey: false,
         allowEnterKey: false,
-
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "{{ url('data-user') }}";

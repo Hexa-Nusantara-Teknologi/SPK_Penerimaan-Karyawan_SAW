@@ -7,6 +7,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DataUsersController;
 use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengerjaanTesController;
 use App\Http\Controllers\RankingController;
 use App\Http\Controllers\RiwayatPengisianController;
@@ -37,9 +38,12 @@ Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
 
 // Route Mulai Data User
 Route::middleware(['auth'])->group(function () {
