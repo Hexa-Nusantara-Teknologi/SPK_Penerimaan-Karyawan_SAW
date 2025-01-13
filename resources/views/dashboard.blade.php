@@ -5,6 +5,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="container mt-5">
+            @if($user->role == 'User')
             <div class="welcome-box">
                 @if($ranking)
                 @if($ranking->status == 'Lolos')
@@ -23,6 +24,17 @@
                 </div>
                 @endif
             </div>
+            @elseif($user->role == 'Admin')
+            <div class="welcome-box">
+
+                <div class="welcome-text">
+                    <h1>Hallo, Selamat Datang {{ $user->nama }}!</h1>
+
+                </div>
+
+            </div>
+            @endif
+
         </div>
     </div>
 </div>
