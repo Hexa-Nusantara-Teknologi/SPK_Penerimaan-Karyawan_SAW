@@ -10,11 +10,15 @@
                 @if($ranking)
                 @if($ranking->status == 'Lolos')
                 <div class="welcome-text">
-                    <h1>Hallo, {{ $user->nama }} Selamat Anda Lolos!</h1>
+                    <h1>Halo, {{ $user->nama }}! Selamat, Anda berhasil <b>Lolos Seleksi</b>! 🎉</h1>
+                    <p>Kami sangat antusias menyambut Anda. Tetap semangat untuk langkah berikutnya!</p>
                 </div>
                 @elseif($ranking->status == 'Tidak Lolos')
                 <div class="welcome-text">
-                    <h1>Hallo, {{ $user->nama }} Mohon maaf Anda Belum Lolos.</h1>
+                    <h1>Halo, {{ $user->nama }}. Terima kasih telah berpartisipasi.</h1>
+                    <p>Sayangnya, Anda <b>Belum Lolos</b> pada seleksi kali ini. Jangan menyerah, tetap semangat, dan
+                        terus mencoba
+                        peluang lainnya!</p>
                 </div>
                 @endif
                 @else
@@ -60,5 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endif
-<!-- /.container-fluid -->
+<!-- /.cont
+ainer-fluid -->
 @endsection
