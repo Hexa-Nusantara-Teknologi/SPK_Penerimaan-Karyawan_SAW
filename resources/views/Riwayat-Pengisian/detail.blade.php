@@ -12,25 +12,25 @@
             <!-- SweetAlert Success Message -->
             @if (session('success'))
             <script>
-                Swal.fire({
-                    title: 'Berhasil!',
-                    text: "{{ session('success') }}",
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                    timer: 3000
-                });
+            Swal.fire({
+                title: 'Berhasil!',
+                text: "{{ session('success') }}",
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 3000
+            });
             </script>
             @endif
 
             <!-- SweetAlert Error Message -->
             @if ($errors->any())
             <script>
-                Swal.fire({
-                    title: 'Oops!',
-                    text: '{{ $errors->first() }}',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
+            Swal.fire({
+                title: 'Oops!',
+                text: '{{ $errors->first() }}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
             </script>
             @endif
 
@@ -97,7 +97,7 @@
 
                 <!-- Button Download CV User -->
                 <div class="mb-3">
-                    <a href="{{ asset('uploads/cv/'.$dataUser_activity->user->cv) }}"
+                    <a href="{{ Storage::url($dataUser_activity->user->cv) }}"
                         download="{{ $dataUser_activity->user->cv }}" class="btn btn-primary btn-sm">
                         Download CV
                     </a>
