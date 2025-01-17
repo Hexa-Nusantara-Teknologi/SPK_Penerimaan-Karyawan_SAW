@@ -5,26 +5,18 @@
     <!-- Content Row -->
     <div class="row"
         style="background-color: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-        <div class="col-sm-4">
+        <div class="col-sm-4"></div>
 
-        </div>
-
-        <div class="col-sm-4">
-
-        </div>
+        <div class="col-sm-4"></div>
 
         <div class="col-sm-4">
-            <div class="text-danger" style="margin-top: 17% !important; text-align:right;">Sisa Waktu:
-                <strong>01:59:56</strong>
+            <div class="text-danger" id="timer" style="margin-top: 17% !important; text-align:right;">Sisa Waktu:
+                <strong>01:00:00</strong>
             </div>
-
         </div>
-
-
 
         <div class=" container mt-3">
             <div class="row">
-                <!-- Bagian Kiri -->
                 <div class="col-md-12">
                     <div class="card px-4 py-4">
                         <form id="quiz-form" action="{{ route('submit-score') }}" method="POST">
@@ -66,49 +58,69 @@
                         </form>
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
-
     </div>
 </div>
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var submitButton = document.getElementById('submit-button');
-    submitButton.style.display = 'none';
+    // Logika Timer
+    document.addEventListener('DOMContentLoaded', function() {
+        var submitButton = document.getElementById('submit-button');
+        submitButton.style.display = 'none'; // Tombol submit disembunyikan
 
-    var radioButtons = document.querySelectorAll('input[type="radio"]');
+        var radioButtons = document.querySelectorAll('input[type="radio"]');
+        var timerElement = document.getElementById('timer');
+        var totalTime = 60 * 60; // Waktu total dalam detik (1 jam = 3600 detik)
 
-    function checkAllAnswered() {
-        var allAnswered = true;
+        // Fungsi untuk mengupdate waktu timer
+        function updateTimer() {
+            var minutes = Math.floor(totalTime / 60); // Menghitung menit
+            var seconds = totalTime % 60; // Menghitung detik
+            var formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
-        radioButtons.forEach(function(radio) {
-            var questionId = radio.name.split('[')[1].split(']')[0];
-            var questionAnswered = document.querySelector('input[name="answers[' + questionId +
-                ']"]:checked');
+            timerElement.querySelector('strong').textContent = formattedTime; // Menampilkan waktu
+            totalTime--; // Mengurangi waktu setiap detik
 
-            if (!questionAnswered) {
-                allAnswered = false;
+            // Jika waktu habis (0 detik), kirimkan form secara otomatis
+            if (totalTime < 0) {
+                clearInterval(timerInterval); // Hentikan timer
+                document.getElementById('quiz-form').submit(); // Kirimkan form
             }
+        }
+
+        // Update timer setiap detik
+        var timerInterval = setInterval(updateTimer, 1000);
+
+        // Fungsi untuk mengecek apakah semua soal telah dijawab
+        function checkAllAnswered() {
+            var allAnswered = true;
+
+            radioButtons.forEach(function(radio) {
+                var questionId = radio.name.split('[')[1].split(']')[0];
+                var questionAnswered = document.querySelector('input[name="answers[' + questionId +
+                    ']"]:checked');
+
+                if (!questionAnswered) {
+                    allAnswered = false;
+                }
+            });
+
+            if (allAnswered) {
+                submitButton.style.display = 'block'; // Tampilkan tombol submit jika semua soal dijawab
+            } else {
+                submitButton.style.display = 'none'; // Sembunyikan tombol submit jika ada soal yang belum dijawab
+            }
+        }
+
+        // Event listener untuk perubahan radio button
+        radioButtons.forEach(function(radio) {
+            radio.addEventListener('change', checkAllAnswered);
         });
 
-        if (allAnswered) {
-            submitButton.style.display = 'block';
-        } else {
-            submitButton.style.display = 'none';
-        }
-    }
-
-    radioButtons.forEach(function(radio) {
-        radio.addEventListener('change', checkAllAnswered);
+        // Cek apakah semua soal sudah dijawab saat pertama kali
+        checkAllAnswered();
     });
-
-    checkAllAnswered();
-});
 </script>
 
 

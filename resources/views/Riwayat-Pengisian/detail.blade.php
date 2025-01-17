@@ -12,25 +12,25 @@
             <!-- SweetAlert Success Message -->
             @if (session('success'))
             <script>
-            Swal.fire({
-                title: 'Berhasil!',
-                text: "{{ session('success') }}",
-                icon: 'success',
-                confirmButtonText: 'OK',
-                timer: 3000
-            });
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    timer: 3000
+                });
             </script>
             @endif
 
             <!-- SweetAlert Error Message -->
             @if ($errors->any())
             <script>
-            Swal.fire({
-                title: 'Oops!',
-                text: '{{ $errors->first() }}',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
+                Swal.fire({
+                    title: 'Oops!',
+                    text: '{{ $errors->first() }}',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             </script>
             @endif
 
@@ -111,9 +111,10 @@
                         max="100" required>
                 </div>
 
-                <!-- Tombol Submit -->
+                <!-- Tombol Simpan -->
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary btn-lg">Simpan Perubahan</button>
+                    <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+                    <a href="{{ route('riwayat.index') }}" class="btn btn-danger">Batal</a>
                 </div>
             </form>
         </div>

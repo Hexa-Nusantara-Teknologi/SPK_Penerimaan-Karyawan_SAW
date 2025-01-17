@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,7 +28,7 @@ class UsersSeeder extends Seeder
             'nama' => "User",
             'password' => Hash::make('User123'),
             'role' => "User",
-            'status' => "Lengkap",
+            'status' => "Belum Lengkap",
         ]);
     }
 }

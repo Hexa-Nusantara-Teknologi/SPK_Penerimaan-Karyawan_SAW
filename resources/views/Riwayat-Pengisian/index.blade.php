@@ -55,11 +55,11 @@
                 },
                 {
                     data: 'user_id',
-                    name: 'nama'
+                    name: 'user_id'
                 },
                 {
                     data: 'status_text',
-                    name: 'status',
+                    name: 'status_text',
                     render: function(data, type, row) {
                         // Mengecek jika status_text = 1, maka ubah menjadi "sudah melakukan test"
                         if (data == 1) {

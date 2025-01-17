@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\UsersModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -103,7 +104,7 @@ class UsersController extends Controller
             'sosmed' => 'nullable|string|max:255',
             'role' => 'nullable|string|max:255',
             'status' => 'nullable|string|max:255',
-            'password' => ['nullable', 'confirmed', Password::min(6)->letters()->numbers()],
+            // 'password' => ['nullable', 'confirmed', Password::min(6)->letters()->numbers()],
         ]);
 
 
@@ -115,7 +116,7 @@ class UsersController extends Controller
         $updateData = [
             'nama' => $request->nama,
             'email' => $request->email,
-            'password' => Hash::make($request['password']),
+            // 'password' => Hash::make($request['password']),
             'notelp' => $request->notelp,
             'alamat' => $request->alamat,
             'tgllahir' => $request->tgllahir,
@@ -128,7 +129,7 @@ class UsersController extends Controller
         ];
 
 
-    // Jika file CV ada dalam request dan valid
+        // Jika file CV ada dalam request dan valid
         if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
             // Hapus CV lama jika ada
             if ($users->cv) {

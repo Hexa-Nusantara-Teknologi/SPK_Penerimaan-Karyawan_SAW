@@ -31,7 +31,7 @@ class DataUsersController extends Controller
             'pendidikan' => 'nullable|string|max:255',
             'cv' => $request->hasFile('cv') ? 'required|file|mimes:pdf|max:2048' : 'nullable',  // Validasi file PDF maksimum 2MB
             'sosmed' => 'nullable|string|max:255',
-            'password' => ['nullable', 'confirmed', Password::min(6)->letters()->numbers()],
+            // 'password' => ['nullable', 'confirmed', Password::min(6)->letters()->numbers()],
         ]);
 
         // Cari pengguna yang sedang login
@@ -42,9 +42,9 @@ class DataUsersController extends Controller
         }
 
         // Jika password diisi, hash dan simpan
-    if (!empty($validatedData['password'])) {
-        $user->password = Hash::make($validatedData['password']);
-    }
+        // if (!empty($validatedData['password'])) {
+        //     $user->password = Hash::make($validatedData['password']);
+        // }
         // Update data pengguna
         $user->nama = $validatedData['nama'];
         $user->email = $validatedData['email'];

@@ -38,9 +38,15 @@ class RiwayatPengisianController extends Controller
                 ->addColumn('action', function ($row) {
                     return '<a href="' . route('riwayat.detail', $row->id) . '" class="btn btn-info btn-sm mr-2">Detail</a>';
                 })
+                ->orderColumn('user_id', function ($query, $order) {
+                    // Sorting berdasarkan kolom 'nama' dari tabel relasi 'users'
+                    $query->join('users', 'users.id', '=', 'user_activity.user_id')
+                        ->orderBy('users.nama', $order);
+                })
                 ->make(true);
         }
     }
+
 
     public function update(Request $request, $id)
     {
@@ -66,38 +72,73 @@ class RiwayatPengisianController extends Controller
 
     private function calculateScores()
     {
+        // Mengambil data aktivitas, kriteria, dan subkriteria
         $activities = UserActivityModel::all();
         $criteria = Criteria::all();
         $subcriteria = SubCriteria::all();
 
+        // Cek apakah data kriteria atau aktivitas tersedia
+        if ($criteria->isEmpty() || $activities->isEmpty()) {
+            logger()->warning('Tidak ada data kriteria atau aktivitas untuk diproses.');
+            return;
+        }
+
         $normalized = [];
+
+        // Proses normalisasi nilai
         foreach ($criteria as $criterion) {
             $criteriaName = 'criteria_' . $criterion->id;
             $subCriterionRange = $subcriteria->where('criteria_id', $criterion->id);
+
+            // Cek apakah subkriteria tersedia untuk kriteria ini
+            if ($subCriterionRange->isEmpty()) {
+                logger()->warning("Subkriteria untuk {$criteriaName} tidak ditemukan.");
+                continue;
+            }
+
+            // Ambil nilai minimum dan maksimum subkriteria
             $minValue = $subCriterionRange->min('min_score');
             $maxValue = $subCriterionRange->max('max_score');
 
+            // Pastikan tidak ada pembagian dengan nol
+            if ($maxValue - $minValue <= 0) {
+                logger()->warning("Rentang nilai untuk {$criteriaName} tidak valid (maxValue: {$maxValue}, minValue: {$minValue}).");
+                continue;
+            }
+
+            // Normalisasi nilai setiap aktivitas berdasarkan kriteria
             $normalized[$criteriaName] = $activities->mapWithKeys(function ($row) use ($criteriaName, $minValue, $maxValue) {
                 $value = $row->$criteriaName;
-                $normalizedValue = ($maxValue - $minValue > 0) ? ($value - $minValue) / ($maxValue - $minValue) : 0;
+                $normalizedValue = ($value - $minValue) / ($maxValue - $minValue);
                 return [$row->id => $normalizedValue];
             });
         }
 
+        // Perhitungan skor total
         foreach ($activities as $activity) {
             $score = 0;
 
             foreach ($criteria as $criterion) {
                 $criteriaName = 'criteria_' . $criterion->id;
-                $weight = $criterion->weight / 100;
 
+                // Lanjutkan jika kriteria tidak memiliki data normalisasi
+                if (!isset($normalized[$criteriaName])) {
+                    continue;
+                }
+
+                $weight = $criterion->weight / 100;
                 $score += $normalized[$criteriaName][$activity->id] * $weight;
             }
 
+            // Simpan skor ke database
             $activity->score = $score;
             $activity->save();
+
+            // Logging hasil skor
+            logger()->info("Skor untuk aktivitas ID {$activity->id} berhasil dihitung: {$score}");
         }
     }
+
 
     private function generateRanking()
     {

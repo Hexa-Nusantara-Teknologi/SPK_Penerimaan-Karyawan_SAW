@@ -12,25 +12,25 @@
             <!-- SweetAlert Success Message -->
             @if (session('success'))
             <script>
-            Swal.fire({
-                title: 'Berhasil!',
-                text: "{{ session('success') }}",
-                icon: 'success',
-                confirmButtonText: 'OK',
-                timer: 3000
-            });
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    timer: 3000
+                });
             </script>
             @endif
 
             <!-- SweetAlert Error Message -->
             @if ($errors->any())
             <script>
-            Swal.fire({
-                title: 'Oops!',
-                text: '{{ $errors->first() }}',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
+                Swal.fire({
+                    title: 'Oops!',
+                    text: '{{ $errors->first() }}',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             </script>
             @endif
 
@@ -52,7 +52,7 @@
                 </div>
 
                 <!-- password -->
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password"
                         value="{{ $users->password }}" required>
@@ -61,7 +61,7 @@
                     <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
                         value="{{  $users->password }}" required>
-                </div>
+                </div> -->
 
                 <!-- Nomor Telepon -->
                 <div class="mb-3">
@@ -74,7 +74,7 @@
                 <div class="mb-3">
                     <label for="address" class="form-label">Alamat</label>
                     <textarea class="form-control" id="address" rows="3" name="alamat"
-                        required>{{  $users->alamat }}</textarea>
+                        required>{{ $users->alamat }}</textarea>
                 </div>
 
                 <!-- Tanggal Lahir -->
@@ -140,9 +140,10 @@
                     </select>
                 </div>
 
-                <!-- Tombol Submit -->
+                <!-- Tombol Simpan -->
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary btn-lg">Simpan Perubahan</button>
+                    <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+                    <a href="{{ route('users.index') }}" class="btn btn-danger">Batal</a>
                 </div>
             </form>
         </div>
@@ -150,18 +151,18 @@
 </div>
 
 <script>
-// Preview file CV
-document.getElementById('cv').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        Swal.fire({
-            title: 'File Dipilih',
-            text: `File: ${file.name}`,
-            icon: 'info',
-            confirmButtonText: 'OK'
-        });
-    }
-});
+    // Preview file CV
+    document.getElementById('cv').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            Swal.fire({
+                title: 'File Dipilih',
+                text: `File: ${file.name}`,
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
+        }
+    });
 </script>
 
 

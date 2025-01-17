@@ -12,25 +12,25 @@
             <!-- SweetAlert Success Message -->
             @if (session('success'))
             <script>
-            Swal.fire({
-                title: 'Berhasil!',
-                text: "{{ session('success') }}",
-                icon: 'success',
-                confirmButtonText: 'OK',
-                timer: 3000
-            });
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    timer: 3000
+                });
             </script>
             @endif
 
             <!-- SweetAlert Error Message -->
             @if ($errors->any())
             <script>
-            Swal.fire({
-                title: 'Oops!',
-                text: '{{ $errors->first() }}',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
+                Swal.fire({
+                    title: 'Oops!',
+                    text: '{{ $errors->first() }}',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             </script>
             @endif
 
@@ -52,7 +52,7 @@
                 </div>
 
                 <!-- password -->
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password"
                         value="{{ old('password', $user->password) }}" required>
@@ -61,7 +61,7 @@
                     <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
                         value="{{ old('password', $user->password) }}" required>
-                </div>
+                </div> -->
 
                 <!-- Nomor Telepon -->
                 <div class="mb-3">
@@ -130,18 +130,18 @@
 </div>
 
 <script>
-// Preview file CV
-document.getElementById('cv').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        Swal.fire({
-            title: 'File Dipilih',
-            text: `File: ${file.name}`,
-            icon: 'info',
-            confirmButtonText: 'OK'
-        });
-    }
-});
+    // Preview file CV
+    document.getElementById('cv').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            Swal.fire({
+                title: 'File Dipilih',
+                text: `File: ${file.name}`,
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
+        }
+    });
 </script>
 
 

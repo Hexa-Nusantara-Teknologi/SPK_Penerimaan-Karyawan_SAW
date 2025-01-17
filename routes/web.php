@@ -38,9 +38,7 @@ Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware('auth');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
